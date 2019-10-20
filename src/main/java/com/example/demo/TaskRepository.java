@@ -2,4 +2,4 @@ package com.example.demo;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CourseRepository extends CrudRepository<Course, Long> {}
+public interface TaskRepository extends CrudRepository<Task, Long> {}

@@ -14,43 +14,43 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
     @Autowired
-    CourseRepository courseRepository;
+    TaskRepository taskRepository;
 
     @RequestMapping("/")
-    public String listCourses(Model model){
-        model.addAttribute("courses", courseRepository.findAll());
+    public String listTasks(Model model){
+        model.addAttribute("tasks", taskRepository.findAll());
         return "list";
     }
 
     @GetMapping("/add")
-    public String courseForm(Model model){
-        model.addAttribute("course", new Course());
-        return "courseform";
+    public String taskForm(Model model){
+        model.addAttribute("task", new Task());
+        return "taskform";
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid Course course,
+    public String processForm(@Valid Task task,
         BindingResult result){
         if (result.hasErrors()){
-            return "courseform";
+            return "taskform";
         }
-        courseRepository.save(course);
+        taskRepository.save(task);
         return "redirect:/";
     }
     @RequestMapping("/detail/{id}")
-    public String showCourse(@PathVariable("id") long id, Model model) {
-        model.addAttribute("course", courseRepository.findById(id).get());
+    public String showTask(@PathVariable("id") long id, Model model) {
+        model.addAttribute("task", taskRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
-    public String updateCourse(@PathVariable("id") long id, Model model){
-        model.addAttribute("course", courseRepository.findById(id).get());
-        return "courseform";
+    public String updateTask(@PathVariable("id") long id, Model model){
+        model.addAttribute("task", taskRepository.findById(id).get());
+        return "taskform";
     }
 
     @RequestMapping("/delete/{id}")
-    public String delCourse(@PathVariable("id") long id){
-        courseRepository.deleteById(id);
+    public String delTask(@PathVariable("id") long id){
+        taskRepository.deleteById(id);
         return "redirect:/";
     }
 }

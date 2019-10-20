@@ -9,18 +9,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Course {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotNull
     @Size(min = 4)
-    private String title;
+    private String taskname;
 
     @NotNull
     @Size(min = 3)
-    private String instructor;
+    private String duedate;
 
     @NotNull
     @Size(min = 10)
@@ -28,7 +28,7 @@ public class Course {
 
     @NotNull
     @Min(3)
-    private int credit;
+    private int priority;
 
     public long getId() {
         return id;
@@ -38,20 +38,20 @@ public class Course {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTaskname() {
+        return taskname;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
     }
 
-    public String getInstructor() {
-        return instructor;
+    public String getDuedate() {
+        return duedate;
     }
 
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
+    public void setDuedate(String duedate) {
+        this.duedate = duedate;
     }
 
     public String getDescription() {
@@ -62,11 +62,12 @@ public class Course {
         this.description = description;
     }
 
-    public int getCredit() {
-        return credit;
+    public int getPriority() {
+        return priority;
     }
 
-    public void setCredit(int credit) {
-        this.credit = credit;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
+
 }
